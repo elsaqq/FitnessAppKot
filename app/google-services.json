@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "933419713952",
+    "firebase_url": "https://fitnessappkot-default-rtdb.firebaseio.com",
+    "project_id": "fitnessappkot",
+    "storage_bucket": "fitnessappkot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933419713952:android:7198bb63ce769d005ed0c5",
+        "android_client_info": {
+          "package_name": "com.example.fitnessappkot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933419713952-jn4snrjdffg6csgm1derjm0shpcg0cuv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4R8eUJp6Vv7ElPj11g-ui1RKCh4orCM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933419713952-jn4snrjdffg6csgm1derjm0shpcg0cuv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

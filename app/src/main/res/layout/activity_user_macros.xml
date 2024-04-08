@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        android:elevation="4dp" />
+
+    <TextView
+        android:id="@+id/caloriesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories: " />
+
+    <TextView
+        android:id="@+id/proteinsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Proteins: " />
+
+    <TextView
+        android:id="@+id/carbsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carbs: " />
+
+    <TextView
+        android:id="@+id/fatsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fats: " />
+
+</LinearLayout>

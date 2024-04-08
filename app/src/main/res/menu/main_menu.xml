@@ -1,0 +1,43 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_view_recipes"
+        android:title="@string/view_recipes"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_add_recipe"
+        android:title="@string/add_recipe"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_view_macros"
+        android:title="@string/view_macros"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/addDataEntry"
+        android:title="Food diary "
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/DailyTracker"
+        android:title="Daily Tracker "
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/Feedback"
+        android:title="Feedback "
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/Dashboard"
+        android:title="Dashboard"
+        app:showAsAction="never" />
+
+
+</menu>

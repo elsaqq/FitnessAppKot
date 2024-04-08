@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Toolbar adjusted to be used within LinearLayout -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        android:elevation="4dp" />
+
+    <EditText
+        android:id="@+id/weightInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight in kg"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/heightInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Height in cm"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/ageInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age"
+        android:inputType="number"/>
+
+    <RadioGroup
+        android:id="@+id/genderGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/maleGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"/>
+
+        <RadioButton
+            android:id="@+id/femaleGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"/>
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/activityLevelSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/activity_levels"/>
+
+    <RadioGroup
+        android:id="@+id/goalGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/loseWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lose Weight"/>
+
+        <RadioButton
+            android:id="@+id/maintainWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maintain Weight"/>
+
+        <RadioButton
+            android:id="@+id/gainWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gain Weight"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:paddingTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnViewRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_recipes_button"
+        android:background="@color/colorAccent" />
+
+</LinearLayout>
