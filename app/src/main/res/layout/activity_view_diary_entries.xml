@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ViewDiaryEntriesActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="4dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/diaryEntriesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/totalProteinsTextView"/>
+
+    <TextView
+        android:id="@+id/totalProteinsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Proteins: 0g"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/diaryEntriesRecyclerView"
+        app:layout_constraintBottom_toTopOf="@id/totalCarbsTextView"/>
+
+    <TextView
+        android:id="@+id/totalCarbsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Carbs: 0g"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/totalProteinsTextView"
+        app:layout_constraintBottom_toTopOf="@id/totalFatsTextView"/>
+
+    <TextView
+        android:id="@+id/totalFatsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Fats: 0g"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/totalCarbsTextView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

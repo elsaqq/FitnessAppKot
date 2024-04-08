@@ -14,6 +14,11 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/action_calculatemacro"
+        android:title="Calculate your Macros"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/action_logout"
         android:title="Logout"
         app:showAsAction="never" />

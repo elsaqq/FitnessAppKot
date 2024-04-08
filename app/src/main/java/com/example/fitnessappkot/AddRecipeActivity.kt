@@ -82,6 +82,18 @@ class AddRecipeActivity : AppCompatActivity() {
                 return true
             }
 
+            R.id.addDataEntry -> {
+                startActivity(Intent(this, AddDiaryEntryActivity::class.java))
+
+                return true
+            }
+
+            R.id.DailyTracker -> {
+                startActivity(Intent(this, ViewDiaryEntriesActivity::class.java))
+
+                return true
+            }
+
             R.id.action_logout -> {
                 FirebaseAuth.getInstance().signOut() // Sign out from Firebase
                 val intent = Intent(this, Login::class.java)
@@ -90,8 +102,28 @@ class AddRecipeActivity : AppCompatActivity() {
                 true
             }
 
+            R.id.Feedback -> {
+                startActivity(Intent(this, ReviewActivity::class.java))
+
+                return true
+            }
+
+            R.id.Dashboard -> {
+                startActivity(Intent(this, DashboardActivity::class.java))
+
+                return true
+            }
+
+            R.id.action_calculatemacro-> {
+                startActivity(Intent(this, MainActivity::class.java))
+
+                return true
+            }
+
+
+
         }
         return super.onOptionsItemSelected(item)
-    }
 
+    }
 }

@@ -34,4 +34,9 @@ class DiaryEntryAdapter(private var entries: List<DiaryEntry>) : RecyclerView.Ad
         entries = newEntries
         notifyDataSetChanged()
     }
+
+
+
+
+
 }
