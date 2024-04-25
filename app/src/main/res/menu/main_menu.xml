@@ -10,7 +10,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_view_macros"
-        android:title="@string/view_macros"
+        android:title="view_macros"
         app:showAsAction="ifRoom"/>
 
     <item

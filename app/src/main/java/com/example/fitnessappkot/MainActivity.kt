@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
             val macros = calculateMacros(weight, height, age, goal, activityLevelPosition, isMale)
             storeMacros(macros)
-            resultText.text = "Calories: ${macros["calories"]}\nProteins: ${macros["proteins"]}g\nCarbs: ${macros["carbs"]}g\nFats: ${macros["fats"]}g"
+            resultText.text = "Proteins: ${macros["proteins"]}g\nCarbs: ${macros["carbs"]}g\nFats: ${macros["fats"]}g"
         }
 
         findViewById<Button>(R.id.btnViewRecipes).setOnClickListener {

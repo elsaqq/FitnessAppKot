@@ -15,19 +15,26 @@ class Login : AppCompatActivity() {
     private lateinit var editTextPasswordLogin: EditText
     private lateinit var buttonLogin: Button
     private lateinit var textViewRegister: TextView
-    private lateinit var auth: FirebaseAuth
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         // Initialize FirebaseAuth instance
-        auth = FirebaseAuth.getInstance()
+        initializeAuth()
 
         editTextEmailLogin = findViewById(R.id.editTextEmailLogin)
         editTextPasswordLogin = findViewById(R.id.editTextPasswordLogin)
         buttonLogin = findViewById(R.id.buttonLogin)
         textViewRegister = findViewById(R.id.textViewRegister)
+
+        val textViewForgotPassword: TextView = findViewById(R.id.textViewForgotPassword)
+        textViewForgotPassword.setOnClickListener {
+            val intent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
         buttonLogin.setOnClickListener {
             val email = editTextEmailLogin.text.toString().trim()
@@ -42,7 +49,11 @@ class Login : AppCompatActivity() {
         }
     }
 
-    private fun loginUser(email: String, password: String) {
+    protected open fun initializeAuth() {
+        auth = FirebaseAuth.getInstance()
+    }
+
+    fun loginUser(email: String, password: String) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {

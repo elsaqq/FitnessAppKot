@@ -13,12 +13,13 @@ data class Recipe(
 )
 
 
- class UserMacros(
-    val calories: Double = 0.0,
-    val proteins: Double = 0.0,
-    val carbs: Double = 0.0,
-    val fats: Double = 0.0
+data class UserMacros(
+    val calories: Int = 0,
+    val proteins: Int = 0,
+    val carbs: Int = 0,
+    val fats: Int = 0
 )
+
 
 data class DiaryEntry(
     val id: String = "",

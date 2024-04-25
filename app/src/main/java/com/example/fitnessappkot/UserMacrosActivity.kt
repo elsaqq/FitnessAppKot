@@ -43,7 +43,6 @@ class UserMacrosActivity : AppCompatActivity() {
                     // Ideally, inform the user about the error.
                 }
         } else {
-            // No user logged in; handle this scenario, perhaps redirect to login screen.
         }
     }
 
