@@ -48,7 +48,8 @@ class ViewRecipesActivity : AppCompatActivity() {
                     val recipe = recipeSnapshot.getValue(Recipe::class.java)
                     recipe?.let { recipesList.add(it) }
                 }
-                recipesRecyclerView.adapter = RecipeAdapter(recipesList) // Ensure RecipeAdapter is defined
+                recipesRecyclerView.adapter = RecipeAdapter(recipesList)
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -65,7 +66,6 @@ class ViewRecipesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                // Handle the action for the Up button
                 finish()
                 return true
             }

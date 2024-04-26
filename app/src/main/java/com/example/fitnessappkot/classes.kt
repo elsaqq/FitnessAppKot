@@ -4,7 +4,9 @@ package com.example.fitnessappkot
 data class Recipe(
     val name: String = "",
     val ingredients: List<String> = emptyList(),
-    val macros: String = "",
+    val carbs : Int =0,
+    val fats: Int = 0,
+    val proteins: Int = 0,
     val calories: Int = 0,
     val steps: List<String> = emptyList(),
     val duration: String = "",

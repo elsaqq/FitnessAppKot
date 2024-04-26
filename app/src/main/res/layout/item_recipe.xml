@@ -15,6 +15,28 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/recipeFatTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/recipeProteinTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/recipeCarbosTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/recipeIngredientsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

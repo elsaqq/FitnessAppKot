@@ -12,7 +12,13 @@ class RecipeAdapter(private val recipesList: List<Recipe>) : RecyclerView.Adapte
         fun bind(recipe: Recipe) {
             itemView.findViewById<TextView>(R.id.recipeNameTextView).text = "Name: ${recipe.name}"
             itemView.findViewById<TextView>(R.id.recipeIngredientsTextView).text = "Ingredients: ${recipe.ingredients.joinToString(separator = "\n")}"
-            itemView.findViewById<TextView>(R.id.recipeMacrosTextView).text = "Macros: ${recipe.macros}"
+
+
+
+
+            itemView.findViewById<TextView>(R.id.recipeCarbosTextView).text = "Carbos: ${recipe.carbs}"
+            itemView.findViewById<TextView>(R.id.recipeProteinTextView).text = "Protein: ${recipe.proteins}"
+            itemView.findViewById<TextView>(R.id.recipeFatTextView).text = "Fat: ${recipe.fats}"
             itemView.findViewById<TextView>(R.id.recipeCaloriesTextView).text = "Calories: ${recipe.calories}"
             itemView.findViewById<TextView>(R.id.recipeStepsTextView).text = "Steps: ${recipe.steps.joinToString(separator = "\n")}"
             itemView.findViewById<TextView>(R.id.recipeDurationTextView).text = "Duration: ${recipe.duration}"

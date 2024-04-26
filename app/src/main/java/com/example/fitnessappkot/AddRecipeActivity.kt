@@ -35,7 +35,9 @@ class AddRecipeActivity : AppCompatActivity() {
     private fun uploadRecipe() {
         val name = findViewById<EditText>(R.id.nameEditText).text.toString().trim()
         val ingredients = findViewById<EditText>(R.id.ingredientsEditText).text.toString().split("\\n")
-        val macros = findViewById<EditText>(R.id.macrosEditText).text.toString().trim()
+        val carbs = findViewById<EditText>(R.id.CarbosEditText).text.toString().toIntOrNull() ?: 0
+        val fats = findViewById<EditText>(R.id.FatsEditText).text.toString().toIntOrNull() ?: 0
+        val proteins = findViewById<EditText>(R.id.ProteinEditText).text.toString().toIntOrNull() ?: 0
         val calories = findViewById<EditText>(R.id.caloriesEditText).text.toString().toIntOrNull() ?: 0
         val steps = findViewById<EditText>(R.id.stepsEditText).text.toString().split("\\n")
         val duration = findViewById<EditText>(R.id.durationEditText).text.toString().trim()
@@ -43,7 +45,7 @@ class AddRecipeActivity : AppCompatActivity() {
 
         val pictureUrl = "http://example.com/image.jpg" // Placeholder for an image URL
 
-        val recipe = Recipe(name, ingredients, macros, calories, steps, duration, levelOfDifficulty, pictureUrl)
+        val recipe = Recipe(name, ingredients, carbs, fats, proteins, calories, steps, duration, levelOfDifficulty, pictureUrl)
 
         val newRecipeRef = database.push()
         newRecipeRef.setValue(recipe)

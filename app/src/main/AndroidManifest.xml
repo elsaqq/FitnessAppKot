@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FitnessAppKot"
         tools:targetApi="31">
         <activity
+            android:name=".MacrosAndRecipeMatchActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
         <activity

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center_horizontal"
-    android:background="@android:color/holo_blue_light">
+    android:background="@drawable/colour1">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -39,18 +39,35 @@
             android:inputType="textMultiLine"
             android:minLines="3" />
 
-        <EditText
-            android:id="@+id/macrosEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Macros" />
 
-        <EditText
-            android:id="@+id/caloriesEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Calories"
-            android:inputType="number" />
+
+            <EditText
+                android:id="@+id/caloriesEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Calories"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/FatsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fats"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/ProteinEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Protein"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/CarbosEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Carbos"
+                android:inputType="number" />
 
         <EditText
             android:id="@+id/stepsEditText"
