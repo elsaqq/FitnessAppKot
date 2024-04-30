@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="50dp"
+    android:layout_gravity="center"
+    android:gravity="center_vertical"
+    android:background="#C7E7F6"
+
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send a message to support"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Name"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/editTextSupportMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Enter your message here"
+        android:inputType="textMultiLine"
+        android:minHeight="100dp" />
+
+    <Button
+        android:id="@+id/buttonSendToSupport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Send"
+        style="@style/WhiteMaterialButton"
+        >
+
+    </Button>
+
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/WhiteMaterialButton"
+        android:layout_width="294dp"
+        android:layout_height="284dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+
+        android:scaleType="fitCenter"
+        android:src="@drawable/gym1" />
+
+
+    />
+
+</LinearLayout>
