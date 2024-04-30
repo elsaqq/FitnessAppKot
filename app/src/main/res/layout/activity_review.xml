@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/loginlogo1">
+    android:background="#C7E7F6">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -16,18 +16,25 @@
         android:elevation="4dp" />
 
 
-
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:numStars="5"
-        android:stepSize="1.0" />
+        android:stepSize="1.0"
+        android:progressTint="#FFEB3B" />
+
 
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Enter your name"
         android:inputType="textPersonName"
         android:layout_marginTop="8dp"/>
@@ -35,15 +42,22 @@
     <EditText
         android:id="@+id/commentInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Write a review"
         android:inputType="textMultiLine"
         android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/submitReviewButton"
+        style="@style/WhiteMaterialButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:text="Submit Review"
         android:layout_marginTop="8dp"/>
 

@@ -1,0 +1,43 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_view_recipes"
+        android:title="@string/view_recipes"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_view_macros"
+        android:title="@string/view_macros"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_calculate_macro"
+        android:title="@string/calculate_macros"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_contact"
+        android:title="@string/contact_us"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_view_macros_and_recipes"
+        android:title="@string/view_macros_and_recipes"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_add_data_entry"
+        android:title="@string/food_diary"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_daily_tracker"
+        android:title="@string/daily_tracker"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_feedback"
+        android:title="@string/feedback"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_dashboard"
+        android:title="@string/dashboard"
+        app:showAsAction="never" />
+</menu>

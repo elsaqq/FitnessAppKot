@@ -14,7 +14,6 @@ class DiaryEntryAdapter(private var entries: List<DiaryEntry>) : RecyclerView.Ad
 
         fun bind(diaryEntry: DiaryEntry) {
             textViewFoodName.text = diaryEntry.foodName
-            // Assuming you want to display the macros in a single TextView. Adjust as needed.
             textViewMacros.text = "Proteins: ${diaryEntry.proteins}g, Carbs: ${diaryEntry.carbs}g, Fats: ${diaryEntry.fats}g"
         }
     }

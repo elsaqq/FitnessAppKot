@@ -1,5 +1,6 @@
 package com.example.fitnessappkot
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -11,6 +12,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
     private lateinit var editTextEmailReset: EditText
     private lateinit var buttonResetPassword: Button
+    private lateinit var buttonBackToLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +20,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
         editTextEmailReset = findViewById(R.id.editTextEmailReset)
         buttonResetPassword = findViewById(R.id.buttonResetPassword)
+        buttonBackToLogin = findViewById(R.id.buttonBackToLogin)
 
         buttonResetPassword.setOnClickListener {
             val email = editTextEmailReset.text.toString().trim()
@@ -26,6 +29,10 @@ class ResetPasswordActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        buttonBackToLogin.setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
         }
     }
 

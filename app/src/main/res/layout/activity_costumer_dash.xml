@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C7E7F6"
+
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gym1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHeight_percent="0.3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/viewMacro"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Check current macros"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#02518F"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/MacrosCalculator"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Go to Macros Calculator"
+            android:backgroundTint="#02518F"
+            android:textColor="#FFFFFF"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewMacro" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/DiaryEntry1"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Food Diary Entry"
+            app:icon="@drawable/macros"
+
+            app:iconSize="24dp"
+            android:backgroundTint="#02518F"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/MacrosCalculator" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Recipes1"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Go to Recipes"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            android:backgroundTint="#02518F"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/DiaryEntry1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Reviews1"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Go to Reviews"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            android:backgroundTint="#02518F"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/Recipes1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ViewDataEntry1"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Go to Data Entry View"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            android:backgroundTint="#12CEFD"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Reviews1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/contact1"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Contact or Suggest recipes"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            android:backgroundTint="#12CEFD"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ViewDataEntry1" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RecipeMatch"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginRight="68dp"
+            android:text="Check Recipes for your macros"
+            app:icon="@drawable/macros"
+            app:iconSize="24dp"
+            android:backgroundTint="#12CEFD"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contact1" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

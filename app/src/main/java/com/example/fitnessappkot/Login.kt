@@ -2,71 +2,123 @@ package com.example.fitnessappkot
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fitnessappkot.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class Login : AppCompatActivity() {
 
-    private lateinit var editTextEmailLogin: EditText
-    private lateinit var editTextPasswordLogin: EditText
-    private lateinit var buttonLogin: Button
-    private lateinit var textViewRegister: TextView
-    lateinit var auth: FirebaseAuth
+
+    private var adminCode: String = "1234"
+    private lateinit var binding: ActivityLoginBinding
+
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Initialize FirebaseAuth instance
-        initializeAuth()
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        editTextEmailLogin = findViewById(R.id.editTextEmailLogin)
-        editTextPasswordLogin = findViewById(R.id.editTextPasswordLogin)
-        buttonLogin = findViewById(R.id.buttonLogin)
-        textViewRegister = findViewById(R.id.textViewRegister)
+        val switchAdmin = binding.switch1
+        val adminCodeField = binding.admincode
 
-        val textViewForgotPassword: TextView = findViewById(R.id.textViewForgotPassword)
-        textViewForgotPassword.setOnClickListener {
-            val intent = Intent(this, ResetPasswordActivity::class.java)
-            startActivity(intent)
+        adminCodeField.visibility = View.INVISIBLE
+        switchAdmin.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                adminCodeField.visibility = View.VISIBLE
+                Toast.makeText(applicationContext, "Insert Admin Code", Toast.LENGTH_SHORT).show()
+            } else {
+                adminCodeField.visibility = View.INVISIBLE
+                Toast.makeText(applicationContext, "Admin Code Hidden", Toast.LENGTH_SHORT).show()
+            }
         }
 
+        binding.buttonLogin.setOnClickListener {
+            val email = binding.editTextEmailLogin.text.toString().trim()
+            val password = binding.editTextPasswordLogin.text.toString().trim()
+            val enteredAdminCode = adminCodeField.text.toString()
 
-        buttonLogin.setOnClickListener {
-            val email = editTextEmailLogin.text.toString().trim()
-            val password = editTextPasswordLogin.text.toString().trim()
-            loginUser(email, password)
-        }
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        textViewRegister.setOnClickListener {
-            // Navigate to Register Activity
-            val intent = Intent(this, Register::class.java)
-            startActivity(intent)
-        }
-    }
-
-    protected open fun initializeAuth() {
-        auth = FirebaseAuth.getInstance()
-    }
-
-    fun loginUser(email: String, password: String) {
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Navigate to Main Activity
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    if (enteredAdminCode == adminCode) {
+                        val adminIntent = Intent(this, DashboardActivity::class.java)
+                        startActivity(adminIntent)
+                    } else {
+                        val userIntent = Intent(this, CostumerDash::class.java)
+                        startActivity(userIntent)
+                    }
                 } else {
-                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, task.exception?.message ?: "Login failed", Toast.LENGTH_SHORT).show()
                 }
             }
-        } else {
-            Toast.makeText(this, "Please fill all the fields.", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.textViewRegister.setOnClickListener {
+            val registerIntent = Intent(this, Register::class.java)
+            startActivity(registerIntent)
+        }
+
+        binding.textViewForgotPassword.setOnClickListener {
+            val resetPasswordIntent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(resetPasswordIntent)
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

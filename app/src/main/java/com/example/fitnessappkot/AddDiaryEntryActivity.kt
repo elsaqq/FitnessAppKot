@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
 
 class AddDiaryEntryActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -24,7 +25,6 @@ class AddDiaryEntryActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        // Firebase Auth instance
         auth = FirebaseAuth.getInstance()
 
         val editTextFoodName: EditText = findViewById(R.id.editTextFoodName)
@@ -70,78 +70,6 @@ class AddDiaryEntryActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                // Handle the action for the Up button
-                finish()
-                return true
-            }
-            R.id.action_add_recipe -> {
-                startActivity(Intent(this, AddRecipeActivity::class.java))
-                return true
-            }
-            R.id.action_view_recipes -> {
-                startActivity(Intent(this, ViewRecipesActivity::class.java))
-                return true
-            }
-            R.id.action_view_macros -> {
-                startActivity(Intent(this, UserMacrosActivity::class.java))
-
-                return true
-            }
-
-            R.id.addDataEntry -> {
-                startActivity(Intent(this, AddDiaryEntryActivity::class.java))
-
-                return true
-            }
-
-            R.id.DailyTracker -> {
-                startActivity(Intent(this, ViewDiaryEntriesActivity::class.java))
-
-                return true
-            }
-
-            R.id.action_logout -> {
-                FirebaseAuth.getInstance().signOut() // Sign out from Firebase
-                val intent = Intent(this, Login::class.java)
-                startActivity(intent)
-                finish() // Prevent returning to MainActivity after logging out
-                true
-            }
-
-            R.id.Feedback -> {
-                startActivity(Intent(this, ReviewActivity::class.java))
-
-                return true
-            }
-
-            R.id.Dashboard -> {
-                startActivity(Intent(this, DashboardActivity::class.java))
-
-                return true
-            }
-
-            R.id.action_calculatemacro-> {
-                startActivity(Intent(this, MainActivity::class.java))
-
-                return true
-            }
-
-
-
-        }
-        return super.onOptionsItemSelected(item)
-
-    }
-
     private fun saveDiaryEntry(diaryEntry: DiaryEntry) {
         val databaseReference = FirebaseDatabase.getInstance().getReference("DiaryEntries")
         val entryId = databaseReference.push().key ?: return // Generate a unique ID
@@ -152,11 +80,96 @@ class AddDiaryEntryActivity : AppCompatActivity() {
         databaseReference.child(entryId).setValue(newEntryWithId)
             .addOnSuccessListener {
                 Toast.makeText(this, "Entry saved successfully", Toast.LENGTH_SHORT).show()
+
+                // Update the user's macros in Firebase
+                val userMacrosRef = FirebaseDatabase.getInstance().getReference("userMacros").child(diaryEntry.userId)
+                userMacrosRef.get().addOnSuccessListener { dataSnapshot ->
+                    val userMacros = dataSnapshot.getValue<UserMacros>()
+                    userMacros?.let {
+                        val updatedUserMacros = UserMacros(
+                            calories = it.calories,
+                            proteins = it.proteins - diaryEntry.proteins,
+                            carbs = it.carbs - diaryEntry.carbs,
+                            fats = it.fats - diaryEntry.fats
+                        )
+                        userMacrosRef.setValue(updatedUserMacros)
+                    }
+                }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to save entry", Toast.LENGTH_SHORT).show()
             }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menucostumer, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_view_recipes -> {
+                val intent = Intent(this, ViewRecipesActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_view_macros -> {
+                val intent = Intent(this, UserMacrosActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_calculate_macro -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_contact -> {
+                val intent = Intent(this, Contact::class.java)
+                startActivity(intent)
+                true
+            }
+
+            R.id.action_logout -> {
+                FirebaseAuth.getInstance().signOut() // Sign out from Firebase
+                val intent = Intent(this, Login::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+
+
+
+            R.id.action_view_macros_and_recipes -> {
+                val intent = Intent(this, MacrosAndRecipeMatchActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_add_data_entry -> {
+                val intent = Intent(this, AddDiaryEntryActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_daily_tracker -> {
+                val intent = Intent(this, ViewDiaryEntriesActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_feedback -> {
+                val intent = Intent(this, ReviewActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_dashboard -> {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }
+
+
+
 

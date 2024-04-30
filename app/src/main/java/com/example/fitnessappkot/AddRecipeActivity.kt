@@ -21,7 +21,6 @@ class AddRecipeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_recipe)
 
-        // Set the toolbar as the app bar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -42,8 +41,7 @@ class AddRecipeActivity : AppCompatActivity() {
         val steps = findViewById<EditText>(R.id.stepsEditText).text.toString().split("\\n")
         val duration = findViewById<EditText>(R.id.durationEditText).text.toString().trim()
         val levelOfDifficulty = findViewById<EditText>(R.id.difficultyEditText).text.toString().trim()
-
-        val pictureUrl = "http://example.com/image.jpg" // Placeholder for an image URL
+        val pictureUrl = findViewById<EditText>(R.id.pictureUrlEditText).text.toString().trim()
 
         val recipe = Recipe(name, ingredients, carbs, fats, proteins, calories, steps, duration, levelOfDifficulty, pictureUrl)
 
@@ -51,7 +49,7 @@ class AddRecipeActivity : AppCompatActivity() {
         newRecipeRef.setValue(recipe)
             .addOnSuccessListener {
                 Toast.makeText(applicationContext, "Recipe added successfully", Toast.LENGTH_LONG).show()
-                finish() // Optionally, close this activity on success
+                finish()
             }
             .addOnFailureListener {
                 Toast.makeText(applicationContext, "Failed to add recipe", Toast.LENGTH_LONG).show()
@@ -64,68 +62,81 @@ class AddRecipeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                // Handle the action for the Up button
-                finish()
-                return true
-            }
+        return when (item.itemId) {
+
             R.id.action_add_recipe -> {
-                startActivity(Intent(this, AddRecipeActivity::class.java))
-                return true
-            }
-            R.id.action_view_recipes -> {
-                startActivity(Intent(this, ViewRecipesActivity::class.java))
-                return true
-            }
-            R.id.action_view_macros -> {
-                startActivity(Intent(this, UserMacrosActivity::class.java))
-
-                return true
-            }
-
-            R.id.addDataEntry -> {
-                startActivity(Intent(this, AddDiaryEntryActivity::class.java))
-
-                return true
-            }
-
-            R.id.DailyTracker -> {
-                startActivity(Intent(this, ViewDiaryEntriesActivity::class.java))
-
-                return true
-            }
-
-            R.id.action_logout -> {
-                FirebaseAuth.getInstance().signOut() // Sign out from Firebase
-                val intent = Intent(this, Login::class.java)
+                val intent = Intent(this, AddRecipeActivity::class.java)
                 startActivity(intent)
-                finish() // Prevent returning to MainActivity after logging out
                 true
             }
 
-            R.id.Feedback -> {
-                startActivity(Intent(this, ReviewActivity::class.java))
 
-                return true
+            R.id.action_view_recipes -> {
+                val intent = Intent(this, ViewRecipesActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_view_macros -> {
+                val intent = Intent(this, UserMacrosActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_calculate_macro -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_contact -> {
+                val intent = Intent(this, Contact::class.java)
+                startActivity(intent)
+                true
             }
 
-            R.id.Dashboard -> {
-                startActivity(Intent(this, DashboardActivity::class.java))
-
-                return true
-            }
-
-            R.id.action_calculatemacro-> {
-                startActivity(Intent(this, MainActivity::class.java))
-
-                return true
+            R.id.action_logout -> {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, Login::class.java)
+                startActivity(intent)
+                finish()
+                true
             }
 
 
+            R.id.action_view_macros_and_recipes -> {
+                val intent = Intent(this, MacrosAndRecipeMatchActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_add_data_entry -> {
+                val intent = Intent(this, AddDiaryEntryActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_daily_tracker -> {
+                val intent = Intent(this, ViewDiaryEntriesActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_feedback -> {
+                val intent = Intent(this, ReviewActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_dashboard -> {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                true
+            }
 
+
+            R.id.action_dashboard -> {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                true
+            }
+
+
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
-
     }
+
 }

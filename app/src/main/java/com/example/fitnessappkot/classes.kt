@@ -15,12 +15,24 @@ data class Recipe(
 )
 
 
+
+
 data class UserMacros(
-    val calories: Int = 0,
-    val proteins: Int = 0,
-    val carbs: Int = 0,
-    val fats: Int = 0
+    var calories: Double = 0.0,
+    var proteins: Double = 0.0,
+    var carbs: Double = 0.0,
+    var fats: Double = 0.0
 )
+data class SupportMessage(
+    val id: String = "",
+    val name: String = "",
+    val email: String = "",
+    val message: String = "",
+    val timestamp: Long = 0
+)
+
+
+
 
 
 data class DiaryEntry(
@@ -30,9 +42,11 @@ data class DiaryEntry(
     val foodName: String = "",
     val quantity: String = "",
     val mealTime: String = "",
-    val proteins: Double = 0.0, // Added
-    val carbs: Double = 0.0, // Added
-    val fats: Double = 0.0 // Added
+    val proteins: Double = 0.0,
+    val carbs: Double = 0.0,
+    val fats: Double = 0.0
+
+
 )
 
 

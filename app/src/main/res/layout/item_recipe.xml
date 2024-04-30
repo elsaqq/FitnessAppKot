@@ -5,70 +5,83 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backfinal" />
 
     <TextView
         android:id="@+id/recipeNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/recipeFatTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
 
+        <TextView
+            android:id="@+id/recipeFatTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/recipeProteinTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/recipeProteinTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/recipeCarbosTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/recipeCarbosTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/recipeIngredientsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/recipeMacrosTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
-
-    <TextView
-        android:id="@+id/recipeCaloriesTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/recipeStepsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/recipeDurationTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/recipeDifficultyTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+        android:textSize="16sp"/>
+
 </LinearLayout>

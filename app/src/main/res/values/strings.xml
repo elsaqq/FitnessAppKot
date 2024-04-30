@@ -11,6 +11,18 @@
     <string name="view_recipes">View Recipes</string>
     <string name="view_macros">View Macros</string> <!-- Added string for View Macros -->
     <string name="default_web_client_id">933419713952-jn4snrjdffg6csgm1derjm0shpcg0cuv.apps.googleusercontent.com</string>
+    <string name="calculate_macros">Calculate your Macros</string>
+    <string name="contact_us">Contact us and Add your recipe</string>
+    <string name="logout">Logout</string>
+    <string name="view_macros_and_recipes">View Macros and Recipes</string>
+    <string name="food_diary">Food diary</string>
+    <string name="daily_tracker">Daily Tracker</string>
+    <string name="feedback">Feedback</string>
+    <string name="dashboard">Dashboard</string>
+
+    <!-- Added strings for custom switch labels -->
+    <string name="switch_on">ON</string>
+    <string name="switch_off">OFF</string>
 
     <string-array name="meal_times">
         <item>Breakfast</item>
@@ -18,7 +30,6 @@
         <item>Dinner</item>
         <item>Snack</item>
     </string-array>
-
 
     <string-array name="activity_levels">
         <item>Sedentary (little or no exercise)</item>

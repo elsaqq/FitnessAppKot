@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddDiaryEntryActivity">
+    tools:context=".AddDiaryEntryActivity"
+    android:background="#C7E7F6"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,8 +18,11 @@
 
     <EditText
         android:id="@+id/editTextFoodName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Food Name"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +31,11 @@
 
     <EditText
         android:id="@+id/editTextQuantity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Quantity"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/editTextFoodName"
@@ -37,8 +45,11 @@
 
     <EditText
         android:id="@+id/editTextProteins"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Proteins (g)"
         android:inputType="numberDecimal"
         app:layout_constraintTop_toBottomOf="@id/editTextQuantity"
@@ -48,8 +59,11 @@
 
     <EditText
         android:id="@+id/editTextCarbs"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Carbs (g)"
         android:inputType="numberDecimal"
         app:layout_constraintTop_toBottomOf="@id/editTextProteins"
@@ -57,10 +71,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
+
+
+
     <EditText
         android:id="@+id/editTextFats"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
         android:hint="Fats (g)"
         android:inputType="numberDecimal"
         app:layout_constraintTop_toBottomOf="@id/editTextCarbs"
@@ -68,21 +88,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
+    <EditText
+        android:id="@+id/editTextCalories"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="68dp"
+        android:hint="Calories"
+        app:layout_constraintTop_toBottomOf="@id/editTextFats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal"/>
+
     <Spinner
         android:id="@+id/spinnerMealTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editTextFats"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextFats" />
 
     <Button
         android:id="@+id/buttonSaveEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Entry"
-        android:background="@color/colorWhite"
+        style="@style/WhiteMaterialButton"
         android:textColor="@android:color/black"
         app:layout_constraintTop_toBottomOf="@id/spinnerMealTime"
         app:layout_constraintStart_toStartOf="parent"

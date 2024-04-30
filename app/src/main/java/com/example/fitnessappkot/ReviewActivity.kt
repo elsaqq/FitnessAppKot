@@ -107,41 +107,32 @@ class ReviewActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.menucostumer, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                // Handle the action for the Up button
-                finish()
-                return true
-            }
-            R.id.action_add_recipe -> {
-                startActivity(Intent(this, AddRecipeActivity::class.java))
-                return true
-            }
+        // Handle item selection
+        return when (item.itemId) {
             R.id.action_view_recipes -> {
-                startActivity(Intent(this, ViewRecipesActivity::class.java))
-                return true
+                val intent = Intent(this, ViewRecipesActivity::class.java)
+                startActivity(intent)
+                true
             }
             R.id.action_view_macros -> {
-                startActivity(Intent(this, UserMacrosActivity::class.java))
-
-                return true
+                val intent = Intent(this, UserMacrosActivity::class.java)
+                startActivity(intent)
+                true
             }
-
-            R.id.addDataEntry -> {
-                startActivity(Intent(this, AddDiaryEntryActivity::class.java))
-
-                return true
+            R.id.action_calculate_macro -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
             }
-
-            R.id.DailyTracker -> {
-                startActivity(Intent(this, ViewDiaryEntriesActivity::class.java))
-
-                return true
+            R.id.action_contact -> {
+                val intent = Intent(this, Contact::class.java)
+                startActivity(intent)
+                true
             }
 
             R.id.action_logout -> {
@@ -152,28 +143,36 @@ class ReviewActivity : AppCompatActivity() {
                 true
             }
 
-            R.id.Feedback -> {
-                startActivity(Intent(this, ReviewActivity::class.java))
 
-                return true
+
+            R.id.action_view_macros_and_recipes -> {
+                val intent = Intent(this, MacrosAndRecipeMatchActivity::class.java)
+                startActivity(intent)
+                true
             }
-
-            R.id.Dashboard -> {
-                startActivity(Intent(this, DashboardActivity::class.java))
-
-                return true
+            R.id.action_add_data_entry -> {
+                val intent = Intent(this, AddDiaryEntryActivity::class.java)
+                startActivity(intent)
+                true
             }
-
-            R.id.action_calculatemacro-> {
-                startActivity(Intent(this, MainActivity::class.java))
-
-                return true
+            R.id.action_daily_tracker -> {
+                val intent = Intent(this, ViewDiaryEntriesActivity::class.java)
+                startActivity(intent)
+                true
             }
-
-
-
+            R.id.action_feedback -> {
+                val intent = Intent(this, ReviewActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_dashboard -> {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
-
     }
+
+
 }
