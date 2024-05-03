@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.fitnessappkot.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
+
+/**
+ * LoginActivity manages user authentication, including admin access features.
+ */
 class Login : AppCompatActivity() {
 
 
@@ -19,12 +23,23 @@ class Login : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
 
+    /**
+    * Initializes the activity, setting up the layout and Firebase authentication,
+    along with UI interaction listeners.
+    */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        // Initialize Firebase authentication.
+
         firebaseAuth = FirebaseAuth.getInstance()
+
+
+        // UI Elements for admin switch and admin code input field.
 
         val switchAdmin = binding.switch1
         val adminCodeField = binding.admincode

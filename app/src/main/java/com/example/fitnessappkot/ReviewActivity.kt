@@ -15,6 +15,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+
+/**
+ * ReviewActivity allows users to submit reviews and view existing reviews.
+ * It interacts with Firebase to store and retrieve reviews, displaying them using a RecyclerView.
+ */
 class ReviewActivity : AppCompatActivity() {
 
     private lateinit var nameInput: EditText
@@ -65,7 +70,6 @@ class ReviewActivity : AppCompatActivity() {
                 }
             })
 
-        // Handle review submission
         submitReviewButton.setOnClickListener {
             val name = nameInput.text.toString().trim()
             if (name.isEmpty()) {

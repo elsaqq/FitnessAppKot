@@ -8,6 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * ResetPasswordActivity allows users to reset their passwords by entering their registered email.
+ * It uses Firebase Authentication to send a password reset email.
+ */
 class ResetPasswordActivity : AppCompatActivity() {
 
     private lateinit var editTextEmailReset: EditText
@@ -35,7 +39,10 @@ class ResetPasswordActivity : AppCompatActivity() {
             startActivity(Intent(this, Login::class.java))
         }
     }
-
+    /**
+    * Initiates a password reset request for the provided email address using Firebase Authentication.
+    * @param email The email address for which to send the reset password link.
+    */
     private fun resetPassword(email: String) {
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->

@@ -53,7 +53,7 @@ data class DiaryEntry(
 
 data class Review(
     val userId: String = "",
-    val name: String = "", // Add this line
+    val name: String = "",
     val username: String = "",
     val rating: Float = 0f,
     val comment: String = "",

@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
+/**
+ * Contact activity allows users to send support messages which are stored in Firebase.
+ */
 class Contact : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +40,12 @@ class Contact : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sends a user support message to Firebase and handles success or failure.
+     * @param name User's name
+     * @param email User's email
+     * @param message Support message content
+     */
     private fun sendMessageToSupport(name: String, email: String, message: String) {
         val supportRef = FirebaseDatabase.getInstance().getReference("SupportMessages")
         val messageId = supportRef.push().key ?: return

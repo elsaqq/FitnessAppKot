@@ -9,7 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fitnessappkot.R
 
+/**
+ * Adapter for displaying a list of recipes in a RecyclerView.
+ * Each item in the list represents a recipe, displaying its name, ingredients, macronutrients, and other details.
+ */
 class RecipeAdapter(private val recipesList: List<Recipe>) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+
 
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.recipeNameTextView)
@@ -22,6 +27,10 @@ class RecipeAdapter(private val recipesList: List<Recipe>) : RecyclerView.Adapte
         private val difficultyTextView: TextView = itemView.findViewById(R.id.recipeDifficultyTextView)
         private val imageView: ImageView = itemView.findViewById(R.id.recipeImageView)
 
+        /**
+         * Bind the current view in the ViewHolder to the data in the corresponding Recipe object.
+         * @param recipe The Recipe object containing the data to be displayed.
+         */
         fun bind(recipe: Recipe) {
             nameTextView.text = "Name: ${recipe.name}"
             ingredientsTextView.text = "Ingredients: ${recipe.ingredients.joinToString(separator = "\n")}"
@@ -49,6 +58,8 @@ class RecipeAdapter(private val recipesList: List<Recipe>) : RecyclerView.Adapte
         val recipe = recipesList[position]
         holder.bind(recipe)
     }
-
+    /**
+     * Returns the size of your dataset.
+     */
     override fun getItemCount() = recipesList.size
 }

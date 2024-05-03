@@ -15,7 +15,10 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+/**
+ * ViewDiaryEntriesActivity displays a list of user-specific diary entries and their nutritional information.
+ * It retrieves data from Firebase, calculates total macros, and updates the UI accordingly.
+ */
 class ViewDiaryEntriesActivity : AppCompatActivity() {
     private lateinit var diaryEntriesRecyclerView: RecyclerView
     private lateinit var diaryEntriesList: ArrayList<DiaryEntry>
@@ -41,7 +44,9 @@ class ViewDiaryEntriesActivity : AppCompatActivity() {
 
         getDiaryEntries()
     }
-
+    /**
+     * Fetches diary entries associated with the current user and updates the UI with total macro counts.
+     */
     private fun getDiaryEntries() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser?.let { user ->

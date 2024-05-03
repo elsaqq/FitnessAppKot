@@ -9,7 +9,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+/**
+ * Activity for viewing support messages. Messages are fetched from Firebase.
+ */
 class ViewSupportMessagesActivity : AppCompatActivity() {
 
     private lateinit var messagesRecyclerView: RecyclerView
@@ -30,7 +32,9 @@ class ViewSupportMessagesActivity : AppCompatActivity() {
 
         loadMessages()
     }
-
+    /**
+     * Fetches support messages from Firebase database.
+     */
     private fun loadMessages() {
         val dbRef = FirebaseDatabase.getInstance().getReference("SupportMessages")
         dbRef.addValueEventListener(object : ValueEventListener {

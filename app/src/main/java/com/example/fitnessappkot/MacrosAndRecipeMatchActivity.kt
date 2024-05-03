@@ -14,6 +14,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.widget.Toast
 
+/**
+ * Activity to match recipes based on user macros. It fetches user-specific macro goals and available recipes,
+ * then filters and displays recipes that fit within those macro constraints.
+ */
 class MacrosAndRecipeMatchActivity : AppCompatActivity() {
 
     private lateinit var userMacros: UserMacros
@@ -21,6 +25,10 @@ class MacrosAndRecipeMatchActivity : AppCompatActivity() {
     private lateinit var matchedRecipesList: ArrayList<Recipe>
     private lateinit var adapter: RecipeAdapter
 
+    /**
+     * Sets up the activity's layout and initial state,
+     * including RecyclerView for displaying recipes.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_macros_and_recipe_match)
@@ -36,6 +44,9 @@ class MacrosAndRecipeMatchActivity : AppCompatActivity() {
         fetchUserMacrosAndMatchRecipes()
     }
 
+    /**
+     * Fetches the user's macros and all available recipes, then filters and updates the UI with matched recipes.
+     */
     private fun fetchUserMacrosAndMatchRecipes() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val userMacrosRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("userMacros").child(userId)
@@ -68,6 +79,10 @@ class MacrosAndRecipeMatchActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Updates the RecyclerView with the new list of matched recipes.
+     * @param newMatchedRecipes List of recipes that match the user's macros.
+     */
     private fun updateMatchedRecipes(newMatchedRecipes: List<Recipe>) {
         val diffResult = DiffUtil.calculateDiff(RecipeDiffCallback(matchedRecipesList, newMatchedRecipes))
 
@@ -76,7 +91,12 @@ class MacrosAndRecipeMatchActivity : AppCompatActivity() {
 
         diffResult.dispatchUpdatesTo(adapter)
     }
-
+    /**
+     * Filters recipes to match them against the user's macros.
+     * @param allRecipes List of all available recipes.
+     * @param userMacros User's current macro nutritional goals.
+     * @return List of recipes that match the user's macros.
+     */
     private fun matchRecipes(allRecipes: List<Recipe>, userMacros: UserMacros): List<Recipe> {
         // Simple greedy-like approach: Select recipes that minimize deviation from user macros
         val sortedRecipes = allRecipes.sortedByDescending { it.calories + it.proteins + it.carbs + it.fats }
@@ -92,6 +112,12 @@ class MacrosAndRecipeMatchActivity : AppCompatActivity() {
 
         return matchedRecipes
     }
+    /**
+     * Checks if a recipe fits within the given macros.
+     * @param macros User's macros.
+     * @param recipe Recipe to check.
+     * @return True if the recipe fits within the macros, false otherwise.
+     */
 
     private fun fitsMacros(macros: UserMacros, recipe: Recipe): Boolean {
         return macros.calories >= recipe.calories &&

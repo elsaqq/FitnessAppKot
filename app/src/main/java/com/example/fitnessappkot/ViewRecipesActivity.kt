@@ -15,7 +15,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+/**
+ * Activity for viewing a list of recipes. Recipes are fetched from Firebase and displayed using a RecyclerView.
+ */
 class ViewRecipesActivity : AppCompatActivity() {
 
     private lateinit var dbRef: DatabaseReference
@@ -38,7 +40,9 @@ class ViewRecipesActivity : AppCompatActivity() {
         recipesList = arrayListOf<Recipe>()
         getRecipesData()
     }
-
+    /**
+     * Fetches recipe data from Firebase and updates the RecyclerView adapter.
+     */
     private fun getRecipesData() {
         dbRef = FirebaseDatabase.getInstance().getReference("recipes")
         dbRef.addValueEventListener(object : ValueEventListener {

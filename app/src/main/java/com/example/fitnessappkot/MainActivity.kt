@@ -10,9 +10,16 @@ import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
+/**
+ * MainActivity allows users to calculate and store their macro-nutritional goals based on personal parameters.
+ * It supports user authentication via Firebase and stores calculated macros in Firebase Database.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
+    /**
+     * Sets up the activity's layout and initializes UI components and Firebase authentication.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -58,7 +65,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ViewRecipesActivity::class.java))
         }
     }
-
+    /**
+     * Calculates user-specific macro goals based on provided personal parameters.
+     * @param weight User's weight in kg.
+     * @param height User's height in cm.
+     * @param age User's age in years.
+     * @param goal User's dietary goal (e.g., Lose Weight, Gain Weight).
+     * @param activityLevelPosition Index of the selected activity level in the spinner.
+     * @param isMale Boolean representing if the user is male.
+     * @return A map of macro-nutritional values.
+     */
     private fun calculateMacros(weight: Double, height: Double, age: Int, goal: String, activityLevelPosition: Int, isMale: Boolean): Map<String, Double> {
         // BMR calculation
         val bmr = if (isMale) {
@@ -77,11 +93,10 @@ class MainActivity : AppCompatActivity() {
         }
         val tdee = bmr * tdeeMultiplier
 
-        // Adjust TDEE based on the goal (lose weight, maintain, gain weight)
         val adjustedCalories = when (goal) {
             "Lose Weight" -> tdee - 500
             "Gain Weight" -> tdee + 500
-            else -> tdee // Assume "Maintain Weight" or unspecified
+            else -> tdee
         }
 
         // Macro split: 30% protein, 30% fats, 40% carbs
@@ -98,6 +113,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * Stores the calculated macros in Firebase Database under the user's profile.
+     * @param macros Map containing calculated macro-nutritional values.
+     */
     private fun storeMacros(macros: Map<String, Double>) {
         val currentUser = auth.currentUser
         if (currentUser != null) {

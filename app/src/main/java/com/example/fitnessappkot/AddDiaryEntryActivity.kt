@@ -15,9 +15,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.getValue
 
+/**
+ * Activity for adding a new diary entry associated with user's meal.
+ * This includes fields for food name, quantity, macronutrients, and the meal time.
+ * It interacts with Firebase to store diary entries and update user macros.
+ */
 class AddDiaryEntryActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
+
+    /**
+     * Initializes the activity with UI elements and Firebase setup.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_diary_entry)
@@ -27,6 +36,8 @@ class AddDiaryEntryActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        // Binding UI elements to variables.
+
         val editTextFoodName: EditText = findViewById(R.id.editTextFoodName)
         val editTextQuantity: EditText = findViewById(R.id.editTextQuantity)
         val editTextProteins: EditText = findViewById(R.id.editTextProteins)
@@ -34,6 +45,8 @@ class AddDiaryEntryActivity : AppCompatActivity() {
         val editTextFats: EditText = findViewById(R.id.editTextFats)
         val spinnerMealTime: Spinner = findViewById(R.id.spinnerMealTime)
         val buttonSaveEntry: Button = findViewById(R.id.buttonSaveEntry)
+
+        // Setting up the spinner for selecting meal time.
 
         ArrayAdapter.createFromResource(
             this,
@@ -70,11 +83,13 @@ class AddDiaryEntryActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Saves the diary entry to Firebase and updates user macros.
+     */
     private fun saveDiaryEntry(diaryEntry: DiaryEntry) {
         val databaseReference = FirebaseDatabase.getInstance().getReference("DiaryEntries")
         val entryId = databaseReference.push().key ?: return // Generate a unique ID
 
-        // Create a new DiaryEntry with the ID
         val newEntryWithId = diaryEntry.copy(id = entryId)
 
         databaseReference.child(entryId).setValue(newEntryWithId)
@@ -100,12 +115,16 @@ class AddDiaryEntryActivity : AppCompatActivity() {
                 Toast.makeText(this, "Failed to save entry", Toast.LENGTH_SHORT).show()
             }
     }
-
+    /**
+     * Inflates the menu for this activity with specific actions.
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menucostumer, menu)
         return true
     }
-
+    /**
+     * Handles item selections from the inflated menu.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_view_recipes -> {

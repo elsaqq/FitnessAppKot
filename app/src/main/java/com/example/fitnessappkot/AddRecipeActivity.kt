@@ -13,10 +13,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
+/**
+ * Activity for adding new recipes to the Firebase database.
+ * Users can enter recipe details including name, ingredients, nutritional values, preparation steps, and more.
+ */
 class AddRecipeActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
-
+    /**
+     * Initializes the activity, setting up the layout and
+     * database reference.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_recipe)
@@ -24,13 +31,16 @@ class AddRecipeActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        //reference to the "recipes" node.
         database = FirebaseDatabase.getInstance().getReference("recipes")
 
         findViewById<Button>(R.id.submitRecipeButton).setOnClickListener {
             uploadRecipe()
         }
     }
-
+    /**
+     * Gathers data from UI, creates a Recipe object, and uploads it to Firebase.
+     */
     private fun uploadRecipe() {
         val name = findViewById<EditText>(R.id.nameEditText).text.toString().trim()
         val ingredients = findViewById<EditText>(R.id.ingredientsEditText).text.toString().split("\\n")
@@ -55,12 +65,17 @@ class AddRecipeActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Failed to add recipe", Toast.LENGTH_LONG).show()
             }
     }
-
+    /**
+     * Inflates the menu for this activity with specific actions.
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
+    /**
+     * Handles item selections from the inflated menu.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
 
